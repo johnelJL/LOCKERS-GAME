@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lockers Game Simulator</title>
+  <meta name="description" content="Interactive simulation of the classic lockers and students puzzle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="content">
+      <h1>Lockers Game Simulator</h1>
+      <p>Explore what happens when students toggle lockers in sequence and discover the pattern hidden in perfect squares.</p>
+      <a class="cta" href="#playground">Start Exploring</a>
+    </div>
+  </header>
+
+  <main id="playground" class="main">
+    <section class="panel controls" aria-labelledby="controls-title">
+      <h2 id="controls-title">Simulation Controls</h2>
+      <form id="controls-form" novalidate>
+        <div class="field-group">
+          <label for="locker-count">Number of lockers</label>
+          <div class="control-with-range">
+            <input type="number" id="locker-count" name="locker-count" min="1" max="400" value="100" required />
+            <input type="range" id="locker-slider" min="1" max="400" value="100" aria-label="Adjust number of lockers" />
+          </div>
+          <p class="hint">Tip: Try 100 lockers to see the classic puzzle in action.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="student-count">Number of students</label>
+          <input type="number" id="student-count" name="student-count" min="1" max="400" value="100" required />
+          <p class="hint">Each student toggles lockers that are multiples of their number.</p>
+        </div>
+
+        <div class="field-group options">
+          <label class="option"><input type="checkbox" id="highlight-squares" checked /> Highlight perfect squares</label>
+          <label class="option"><input type="checkbox" id="show-open-only" /> Show only lockers left open</label>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="primary">Run simulation</button>
+          <button type="button" class="secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="panel summary" aria-live="polite" aria-atomic="true">
+        <h3>Summary</h3>
+        <dl>
+          <div>
+            <dt>Open lockers</dt>
+            <dd><span id="open-count">0</span></dd>
+          </div>
+          <div>
+            <dt>Closed lockers</dt>
+            <dd><span id="closed-count">0</span></dd>
+          </div>
+          <div>
+            <dt>Open locker numbers</dt>
+            <dd><span id="open-list">–</span></dd>
+          </div>
+        </dl>
+      </section>
+    </section>
+
+    <section class="panel visualization" aria-labelledby="visualization-title">
+      <div class="visualization-header">
+        <h2 id="visualization-title">Locker States</h2>
+        <p id="visualization-caption">Each locker tile shows its final state. Hover or focus a tile for details.</p>
+      </div>
+      <div class="locker-grid" id="locker-grid" role="grid" aria-describedby="visualization-caption"></div>
+    </section>
+
+    <section class="panel explanation" aria-labelledby="explanation-title">
+      <h2 id="explanation-title">What is the Lockers Game?</h2>
+      <p>
+        Imagine a hallway with a row of lockers, all closed. One hundred students walk by the lockers one after another.
+        The first student opens every locker. The second student toggles every second locker, the third toggles every
+        third locker, and so on. Which lockers remain open after every student has taken a turn?
+      </p>
+      <p>
+        The surprising answer is that only lockers in perfect square positions stay open. Each perfect square has an odd
+        number of factors, which means it is toggled an odd number of times. All other lockers are toggled an even number
+        of times and end up closed.
+      </p>
+      <p>
+        Use the simulator to adjust the number of lockers and students, then explore the pattern. Highlight perfect
+        squares and filter the view to better see the structure.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built for quick static hosting &mdash; just upload this folder and open <code>index.html</code>.</p>
+  </footer>
+</body>
+</html>
