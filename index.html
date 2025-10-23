@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lockers Activation Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <h1>Lockers Game</h1>
+      </header>
+      <main class="game-container">
+        <section id="welcome-screen" class="screen active" aria-labelledby="welcome-title">
+          <div class="screen-content">
+            <h2 id="welcome-title">Welcome!</h2>
+            <p class="intro-text">Enter your details to start the challenge.</p>
+            <form id="welcome-form" class="form" autocomplete="on">
+              <label class="form-field">
+                <span>Name</span>
+                <input type="text" name="name" id="player-name" required placeholder="Alex Rivera" />
+              </label>
+              <label class="form-field">
+                <span>Email</span>
+                <input type="email" name="email" id="player-email" required placeholder="alex@email.com" />
+              </label>
+              <label class="form-field">
+                <span>Phone</span>
+                <input type="tel" name="phone" id="player-phone" required placeholder="555-123-4567" />
+              </label>
+              <button type="submit" class="primary-button">Start Game</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="question-screen" class="screen" aria-live="polite" aria-labelledby="question-title">
+          <div class="screen-content">
+            <h2 id="question-title">Answer &amp; Win</h2>
+            <p id="question-text" class="question-text"></p>
+            <form id="question-form" class="form options-form">
+              <fieldset id="options-container" class="options" aria-describedby="question-text"></fieldset>
+              <p id="question-feedback" class="feedback" role="alert" aria-live="assertive"></p>
+              <button type="submit" class="primary-button">Submit Answer</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="success-screen" class="screen" aria-labelledby="success-title">
+          <div class="screen-content">
+            <h2 id="success-title">You're a Winner!</h2>
+            <p class="success-message">Here is your unique 4-digit access code:</p>
+            <p id="code-output" class="code-display" aria-live="polite">0000</p>
+            <p id="success-details" class="success-details"></p>
+            <button id="success-finish" class="primary-button">Finish</button>
+          </div>
+        </section>
+
+        <section id="thankyou-screen" class="screen" aria-labelledby="thankyou-title">
+          <div class="screen-content">
+            <h2 id="thankyou-title">Thank You!</h2>
+            <p id="thankyou-message" class="thankyou-message"></p>
+            <button id="thankyou-restart" class="secondary-button">Play Again</button>
+          </div>
+        </section>
+      </main>
+      <footer class="app-footer">
+        <small>&copy; <span id="current-year"></span> Lockers Activation</small>
+      </footer>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
